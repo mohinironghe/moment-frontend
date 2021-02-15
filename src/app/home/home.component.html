@@ -1,0 +1,72 @@
+<!-- ============================================================== -->
+<!-- Main wrapper -->
+<!-- ============================================================== -->
+<div class="main-container" [dir]="dir"
+  [ngClass]="{'minisidebar': minisidebar}">
+  <!-- ============================================================== -->
+  <!-- Topbar  -->
+  <!-- ============================================================== -->
+  <mat-toolbar color="primary" class="topbar telative">
+   
+    <!-- ============================================================== -->
+    <!-- sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <button mat-icon-button (click)="snav.toggle() && clickEvent()" value="sidebarclosed">
+      <mat-icon>sort</mat-icon>
+    </button>
+   
+    <span fxFlex class="flexRight" (click)="logOut()">LogOut</span>
+  
+  </mat-toolbar>
+  <!-- ============================================================== -->
+  <!-- End Topbar -->
+  <!-- ============================================================== -->
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
+    [ngClass]="{'minisidebar': minisidebar}">
+    <!-- ============================================================== -->
+    <!-- Sidebar  -->
+    <!-- ============================================================== -->
+    <mat-sidenav #snav id="snav" class="sidebarwid pl-xs " [mode]="mobileQuery.matches ? 'side' : 'over'" fixedTopGap="0"
+      [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches" (open)="sidebarOpened = true"
+      (close)="sidebarOpened = false">
+      <mat-list-item >
+          <mat-nav-list>
+          <a class="main-sav-bar" >
+              <span>Moments</span>
+              <span fxFlex></span>
+              <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+          </a>
+        </mat-nav-list>
+          <mat-nav-list class="sub-item" *ngFor="let item of menu" >
+              <mat-list-item >
+                  <a [routerLink]="[item.path]"  class="relative"
+                      routerLinkActive="selected" >{{ item.name}}</a>
+              </mat-list-item>  
+              </mat-nav-list>
+      </mat-list-item>
+    
+            <!-- <app-sidebar class="app-sidebar"></app-sidebar> -->
+      <!-- <mat-sidenav opened mode="side" class="example-sidenav-container">Start content</mat-sidenav> -->
+
+
+    </mat-sidenav>
+    <!-- ============================================================== -->
+    <!-- Sidebar  -->
+    
+    <mat-sidenav-content class="page-wrapper" >
+
+      <!-- <app-breadcrumb></app-breadcrumb> -->
+      <div class="page-content">
+        <router-outlet>
+        </router-outlet>
+
+      </div>
+
+    </mat-sidenav-content>
+    <!-- ============================================================== -->
+    <!-- Page container - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+  </mat-sidenav-container>
+</div>
+

@@ -1,0 +1,79 @@
+<div class="login-register" >
+        <!-- style="background-image:url(assets/images/background/login-register.jpg);" -->
+        <div class="login-register-box">
+           
+                    <mat-card>
+                        <mat-card-content>
+                            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                              
+                                <div fxLayout="row wrap">
+                                    <!-- col full-->
+                                    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                        <mat-form-field>
+                                           
+                                            <input matInput placeholder="Title" [formControl]="form.controls['title']">
+                                        </mat-form-field>
+                                        <small *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched" class="text-danger support-text">title is required.</small>
+                                    </div>
+            
+                                   
+                                   
+                                    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                            <mat-form-field class="example-chip-list">
+                                                    <mat-chip-list #chipList aria-label="Tag selection">
+                                                      <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                                                               [removable]="removable" (removed)="remove(tag)">
+                                                        {{tag}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                      </mat-chip>
+                                                      <input placeholder="New Tag..."
+                                                             [matChipInputFor]="chipList"
+                                                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                             [matChipInputAddOnBlur]="addOnBlur"
+                                                             (matChipInputTokenEnd)="add($event)"
+                                                             formControlName="tag">
+                                                    </mat-chip-list>
+                                                  </mat-form-field>
+                                        <!-- <mat-form-field>
+                                            <input matInput placeholder="Tag" [formControl]="form.controls['tag']">
+                                        </mat-form-field> -->
+                                        <small *ngIf="form.controls['tag'].hasError('required') && form.controls['tag'].touched" class="text-danger support-text">Tag is required.</small>
+                                    </div>
+                                    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                    <mat-form-field>
+                                            <mat-label>Comment</mat-label>
+                                            <textarea matInput placeholder="Enter Description" formControlName="comment"></textarea>
+                                        </mat-form-field>
+                                     </div>   
+                                     <div class="uploadBtnDiv">
+                                            <input
+                                              #file
+                                              type="file"
+                                              accept="image/*"
+                                              formControlName="file"
+                                              (change)="preview(file.files)"
+                                              required
+                                              mat-raised-button 
+                                              class="input-file"
+                                              color="primary"
+                                              
+                                            />
+                                            <mat-progress-bar *ngIf="progress" class="progress-bar" mode="determinate" [value]="progress"></mat-progress-bar>
+                                            <span *ngIf="progress">{{progress}}% done</span>
+                                          </div>
+                                    <!-- col full-->
+                                    <div fxFlex.gt-sm="100"  class=" m-t-20 m-b-20" fxFlex.gt-xs="100" fxFlex="100">
+                                        <button mat-raised-button color="primary" class="btn-block btn-lg m-t-20 m-b-20" type="submit" [disabled]="!form.valid">Submit</button>
+                                    </div>
+                                    <!-- col full-->
+                                
+                                </div>
+                            </form>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>     
+
+
+
+

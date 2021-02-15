@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/******************* Topbar *******************/
+mat-toolbar {
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.5);
+}
+mat-toolbar.topbar {
+    padding: 0px 15px;
+}
+mat-toolbar .navbar-header {
+    text-align: center;
+}
+mat-toolbar .navbar-header .navbar-brand {
+    display: flex;
+    line-height: 18px;
+    align-items: center;
+}
+mat-toolbar .navbar-header .navbar-brand .dark-logo {
+    display: none;
+}
+mat-toolbar .navbar-header .navbar-brand b {
+    margin-right: 5px;
+}
+mat-toolbar .app-search {
+    display: none;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    position: absolute;
+}
+mat-toolbar .app-search .form-control {
+    line-height: 42px;
+}
+mat-toolbar .app-search .cl-srh-btn {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 15px;
+    color: bodytext;
+    cursor: pointer;
+}
+mat-toolbar .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+mat-toolbar .app-search.show-search {
+    display: block;
+}
+/******************* Topbar *******************/
+html .page-wrapper .page-content {
+    height: 80vh;
+    padding: 20px;
+}
+.topbar {
+    position: relative;
+   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+}
+.sidebarwid{
+    width: 240px;
+}
+.example-sidenav-container {
+   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+}
+.example-sidenav-container {
+   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}
+.flexRight{
+    flex: 1 1 0%;
+    box-sizing: border-box;
+}
